@@ -21,8 +21,31 @@ def reverse(list):
     list.reverse()
     return list
 
-#1.06
+# 1.06
 def isPalindrome(list):
     rev = list[:]
     reverse(rev)
     return list == rev
+
+# 1.07
+def flatten(nestedList):
+    return list(flattenRecursion(nestedList))
+
+def flattenRecursion(container):
+    for i in container:
+        if isinstance(i, list) or isinstance(i, tuple):
+            for j in flattenRecursion(i):
+                yield j
+        else:
+            yield i
+
+# 1.08
+def removeConsecutiveDuplicates(list):
+    if len(list) <= 0:
+        return list
+
+    out = [list[0]]
+    for x in list[1:]:
+        if x != out[-1]:
+            out.append(x)
+    return out
